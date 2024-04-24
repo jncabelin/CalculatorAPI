@@ -1,1 +1,1 @@
-# CalculatorAPP
+# CalculatorApp
