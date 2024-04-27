@@ -215,23 +215,6 @@ namespace CalculatorApp.Tests.WebApi.UnitTests.Controllers
             Assert.NotNull(objResult);
             Assert.Equal(StatusCodes.Status500InternalServerError, objResult.StatusCode);
         }
-
-        [Fact]
-        [DisplayName("Return 400 using DivideNumbers")]
-        public async Task Return400_using_DivideNumbers_by_0()
-        {
-            // Arrange
-            _mediator.Setup(m => m.Send(It.IsAny<DivideNumbersRequest>(), CancellationToken.None))
-                .ReturnsAsync(Result.Fail(ResponseMessage.DIVISION_BY_0));
-
-            // Act
-            var actionResult = await sut.DivideNumbers(new DivideNumbersRequest { Dividend = 1, Divisor = 0});
-            var objResult = actionResult as JsonResult;
-
-            // Assert
-            Assert.NotNull(objResult);
-            Assert.Equal(StatusCodes.Status400BadRequest, objResult.StatusCode);
-        }
     }
 }
 

@@ -12,10 +12,15 @@ namespace CalculatorApp.WebAPI.Validators
         {
             RuleFor(x => x.Dividend)
                 .NotEmpty()
-                .WithMessage(ResponseMessage.REQUIRED_PARAMETER);
+                .WithMessage(ResponseMessage.REQUIRED_PARAMETER)
+                .NotEqual(new decimal(0))
+                .Unless(x => x.Divisor != 0)
+                .WithMessage(ResponseMessage.INDETERMINATE);
             RuleFor(x => x.Divisor)
                 .NotEmpty()
-                .WithMessage(ResponseMessage.REQUIRED_PARAMETER);
+                .WithMessage(ResponseMessage.REQUIRED_PARAMETER)
+                .NotEqual(new decimal(0))
+                .WithMessage(ResponseMessage.DIVISION_BY_0);
         }
     }
 }

@@ -2,6 +2,7 @@
 using CalculatorApp.Application;
 using CalculatorApp.Application.Services;
 using FluentValidation.AspNetCore;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 
 namespace CalculatorApp.API
@@ -22,9 +23,32 @@ namespace CalculatorApp.API
             services.AddControllers()
              .AddFluentValidation(x => { x.RegisterValidatorsFromAssemblyContaining<Program>(); });
             services.AddSingleton<ICalculatorService, CalculatorService>();
-            services.AddSwaggerGen(c =>
+            services.AddSwaggerGen(options =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Calculator API", Version = "v1" });
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "Calculator API", Version = "v1" });
+                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Scheme = "bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Name = "Authorization",
+                    Description = "Bearer Authentication with JWT Token",
+                    Type = SecuritySchemeType.Http
+                });
+                options.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Id = "Bearer",
+                                Type = ReferenceType.SecurityScheme
+                            }
+                        },
+                        new List<string>()
+                    }
+                });
             });
         }
 

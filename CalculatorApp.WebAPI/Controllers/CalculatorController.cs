@@ -89,7 +89,7 @@ namespace CoffeeMachine.WebApi.Controllers
                 _logger.LogInformation("Divide Numbers Failure: ", result.Reasons.First().Message);
                 return new JsonResult(result.Reasons.First().Message)
                 {
-                    StatusCode = Decimal.ToInt32(request.Divisor) == 0? StatusCodes.Status400BadRequest : StatusCodes.Status500InternalServerError,
+                    StatusCode = StatusCodes.Status500InternalServerError,
                 };
             }
 
