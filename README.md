@@ -30,17 +30,17 @@ Make sure that you have Docker installed on your machine & running.
 - [x] Swagger UI
 
 ### Endpoints
-** Add Numbers **
+**Add Numbers**
 - `/add-numbers?Addend1=<Type_Addend1_Here>&Addend2=<Type_Addend2_Here>`
 
-** Subtract Numbers **
+**Subtract Numbers**
 - `/subtract-numbers?Minuend=<Type_Minuend_Here>&Subtrahend=<Type_Subtrahend_Here>`
 - Minuend: number which is subtracted from a given number(subtrahend)
 
-** Multiply Numbers **
+**Multiply Numbers**
 - `/multiply-numbers?Multiplicand1=<Type_Multiplicand1_Here>&Multiplicand2=<Type_Multiplicand2_Here>`
 
-** Divide Numbers **
+**Divide Numbers**
 - `/divide-numbers?Dividend=<Type_Dividend_Here>&Divisor=<Type_Divisor_Here>`
 - Divisor: number which divides a given number(dividend)
 
