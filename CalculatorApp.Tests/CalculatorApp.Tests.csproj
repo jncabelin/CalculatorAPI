@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="3.1.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.29" />
+    <PackageReference Include="Moq" Version="4.20.70" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="CalculatorApp.IntegrationTests\" />
+    <None Remove="CalculatorApp.IntegrationTests\CalculatorController\" />
+    <None Remove="CalculatorApp.Application.UnitTests\" />
+    <None Remove="CalculatorApp.Application.UnitTests\Handlers\" />
+    <None Remove="CalculatorApp.Application.UnitTests\Services\" />
+    <None Remove="CalculatorApp.WebApi.UnitTests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CalculatorApp.IntegrationTests\" />
+    <Folder Include="CalculatorApp.IntegrationTests\CalculatorController\" />
+    <Folder Include="CalculatorApp.Application.UnitTests\" />
+    <Folder Include="CalculatorApp.Application.UnitTests\Handlers\" />
+    <Folder Include="CalculatorApp.Application.UnitTests\Services\" />
+    <Folder Include="CalculatorApp.WebApi.UnitTests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CalculatorApp.Application\CalculatorApp.Application.csproj" />
+    <ProjectReference Include="..\CalculatorApp.WebAPI\CalculatorApp.WebAPI.csproj" />
+  </ItemGroup>
+</Project>
