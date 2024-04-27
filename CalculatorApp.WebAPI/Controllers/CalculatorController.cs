@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using CalculatorApp.Application.Dtos.Requests;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace CoffeeMachine.WebApi.Controllers
 {
@@ -22,7 +23,7 @@ namespace CoffeeMachine.WebApi.Controllers
         }
 
         [HttpGet("/add-numbers")]
-        public async Task<IActionResult> AddNumbers([FromQuery] AddNumbersRequest request)
+        public async Task<IActionResult> AddNumbers([FromQuery, BindRequired] AddNumbersRequest request)
         {
             var result = await _mediator.Send(request);
             if (result.IsFailed)
@@ -41,7 +42,7 @@ namespace CoffeeMachine.WebApi.Controllers
         }
 
         [HttpGet("/subtract-numbers")]
-        public async Task<IActionResult> SubtractNumbers([FromQuery] SubtractNumbersRequest request)
+        public async Task<IActionResult> SubtractNumbers([FromQuery, BindRequired] SubtractNumbersRequest request)
         {
             var result = await _mediator.Send(request);
             if (result.IsFailed)
@@ -61,7 +62,7 @@ namespace CoffeeMachine.WebApi.Controllers
         }
 
         [HttpGet("/multiply-numbers")]
-        public async Task<IActionResult> MultiplyNumbers([FromQuery] MultiplyNumbersRequest request)
+        public async Task<IActionResult> MultiplyNumbers([FromQuery, BindRequired] MultiplyNumbersRequest request)
         {
             var result = await _mediator.Send(request);
             if (result.IsFailed)
@@ -81,7 +82,7 @@ namespace CoffeeMachine.WebApi.Controllers
         }
 
         [HttpGet("/divide-numbers")]
-        public async Task<IActionResult> DivideNumbers([FromQuery] DivideNumbersRequest request)
+        public async Task<IActionResult> DivideNumbers([FromQuery, BindRequired] DivideNumbersRequest request)
         {
             var result = await _mediator.Send(request);
             if (result.IsFailed)

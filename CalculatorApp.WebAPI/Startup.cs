@@ -1,8 +1,6 @@
 ﻿using CalculatorApp.Api.Services.Interfaces;
 using CalculatorApp.Application;
 using CalculatorApp.Application.Services;
-using FluentValidation.AspNetCore;
-using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 
 namespace CalculatorApp.API
@@ -20,8 +18,7 @@ namespace CalculatorApp.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApplication();
-            services.AddControllers()
-             .AddFluentValidation(x => { x.RegisterValidatorsFromAssemblyContaining<Program>(); });
+            services.AddControllers();
             services.AddSingleton<ICalculatorService, CalculatorService>();
             services.AddSwaggerGen(options =>
             {

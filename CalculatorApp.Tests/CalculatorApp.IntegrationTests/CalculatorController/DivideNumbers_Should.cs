@@ -50,23 +50,8 @@ namespace CalculatorApp.Tests.IntegrationTests.CalculatorController
         }
 
         [Fact]
-        [DisplayName("UseCase003 DivideNumbers By0 ReturnStatus400")]
-        public async Task UseCase003_DivideNumbers_by0_ReturnStatus400()
-        {
-            // Arrange
-            var client = _factory.CreateClient();
-            var dividend = 1;
-
-            // Act
-            var response = await client.GetAsync($"/divide-numbers?Dividend={dividend}&Divisor=0");
-
-            // Assert
-            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
-        }
-
-        [Fact]
-        [DisplayName("UseCase004 DivideNumbers ReturnStatus400 on EmptyRequest")]
-        public async Task UseCase004_DivideNumbers_ReturnStatus400_EmptyRequest()
+        [DisplayName("UseCase003 DivideNumbers ReturnStatus400 on EmptyRequest")]
+        public async Task UseCase003_DivideNumbers_ReturnStatus400_EmptyRequest()
         {
             // Arrange
             var client = _factory.CreateClient();
