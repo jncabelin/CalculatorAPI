@@ -49,6 +49,20 @@ namespace CalculatorApp.Tests.IntegrationTests.CalculatorController
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
 
+        [Fact]
+        [DisplayName("UseCase003 MultiplyNumbers ReturnStatus400 on EmptyRequest")]
+        public async Task UseCase003_MultiplyNumbers_ReturnStatus400_EmptyRequest()
+        {
+            // Arrange
+            var client = _factory.CreateClient();
+
+            // Act
+            var response = await client.GetAsync($"/multiply-numbers");
+
+            // Assert
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        }
+
     }
 }
 

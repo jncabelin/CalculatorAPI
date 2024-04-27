@@ -47,6 +47,20 @@ namespace CalculatorApp.Tests.IntegrationTests.CalculatorController
             // Assert
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
+
+        [Fact]
+        [DisplayName("UseCase003 AddNumbers ReturnStatus400 on EmptyRequest")]
+        public async Task UseCase001_AddNumbers_ReturnStatus400_EmptyRequest()
+        {
+            // Arrange
+            var client = _factory.CreateClient();
+
+            // Act
+            var response = await client.GetAsync($"/add-numbers");
+
+            // Assert
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        }
     }
 }
 

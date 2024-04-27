@@ -49,6 +49,21 @@ namespace CalculatorApp.Tests.IntegrationTests.CalculatorController
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
 
+        [Fact]
+        [DisplayName("UseCase003 SubtractNumbers ReturnStatus400 on EmptyRequest")]
+        public async Task UseCase003_SubtractNumbers_ReturnStatus400_EmptyRequest()
+        {
+            // Arrange
+            var client = _factory.CreateClient();
+            var minuend = 1;
+
+            // Act
+            var response = await client.GetAsync($"/subtract-numbers");
+
+            // Assert
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        }
+
     }
 }
 

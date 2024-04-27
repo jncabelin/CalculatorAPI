@@ -63,6 +63,20 @@ namespace CalculatorApp.Tests.IntegrationTests.CalculatorController
             // Assert
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
+
+        [Fact]
+        [DisplayName("UseCase004 DivideNumbers ReturnStatus400 on EmptyRequest")]
+        public async Task UseCase004_DivideNumbers_ReturnStatus400_EmptyRequest()
+        {
+            // Arrange
+            var client = _factory.CreateClient();
+
+            // Act
+            var response = await client.GetAsync($"/divide-numbers");
+
+            // Assert
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        }
     }
 }
 
